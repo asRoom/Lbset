@@ -1,0 +1,4 @@
+.{
+    "main.c",
+    "assets/load.c",
+}

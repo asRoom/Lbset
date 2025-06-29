@@ -1,0 +1,48 @@
+.{
+    .name = .Lbset,
+
+    .version = "0.0.0",
+
+    .minimum_zig_version = "0.14.0",
+
+    .dependencies = .{
+        // .zimgui = .{
+        //     .path = "third_party/zimgui",
+        // },
+        .zsdl3 = .{
+            .path = "third_party/zsdl3",
+        },
+        .clay = .{
+            .path = "third_party/clay",
+        },
+        .flecs = .{
+            .path = "third_party/flecs",
+        },
+        .logc = .{
+            .path = "third_party/logc",
+        },
+        .cJSON = .{
+            .path = "third_party/cJSON",
+        },
+        .tiny_bignum_c = .{
+            .path = "third_party/tiny-bignum-c",
+        },
+        .cAlgor = .{
+            .path = "third_party/c-algorithms",
+        },
+        .lua = .{
+            .path = "third_party/lua",
+        },
+        .physfs = .{
+            .path = "third_party/physfs",
+        },
+    },
+
+    .fingerprint = 0xd35b8113d7c35e4c,
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
