@@ -39,18 +39,6 @@ pub fn build(b: *std.Build) void {
         .root_module = exe_mod,
     });
 
-    const zsdl3 = b.dependency("zsdl3", .{
-        .target = target,
-        .optimize = optimize,
-        //.preferred_linkage = .static,
-        //.strip = null,
-        //.sanitize_c = null,
-        //.pic = null,
-        //.lto = null,
-        //.emscripten_pthreads = false,
-        //.install_build_config_h = false,
-    });
-
     const zclay = b.dependency("clay", .{
         .target = target,
         .optimize = optimize,
@@ -99,9 +87,36 @@ pub fn build(b: *std.Build) void {
     });
     exe_mod.addImport("physfs", physfs.module("physfs"));
 
+    const zsdl3_ttf = b.dependency("zsdl3_ttf", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe.root_module.addImport("zsdl3_ttf", zsdl3_ttf.module("zsdl3_ttf"));
+
+    const zsdl3 = b.dependency("zsdl3", .{
+        .target = target,
+        .optimize = optimize,
+        //.preferred_linkage = .static,
+        //.strip = null,
+        //.sanitize_c = null,
+        //.pic = null,
+        //.lto = null,
+        //.emscripten_pthreads = false,
+        //.install_build_config_h = false,
+    });
+
     exe.linkLibrary(zsdl3.artifact("SDL3"));
 
+    // exe.linkSystemLibrary("SDL3");
+    // exe.linkSystemLibrary("SDL3_ttf");
+    // exe.linkSystemLibrary("freetype");
+    // exe.linkSystemLibrary("harfbuzz");
+    // exe.linkSystemLibrary("cairo");
+    // exe.linkSystemLibrary("libpng");
+    // exe.linkSystemLibrary("zlib");
+
     exe.linkLibC();
+    // exe.linkLibCpp();
 
     switch (target.result.os.tag) {
         .windows => {
@@ -142,7 +157,6 @@ pub fn build(b: *std.Build) void {
     //         exe.linkFramework("Metal");
     //     },
     //     else => {
-    //         // Linux/Unix 系统
     //         exe.linkSystemLibrary("m");
     //         exe.linkSystemLibrary("dl");
     //         exe.linkSystemLibrary("rt");
@@ -152,13 +166,43 @@ pub fn build(b: *std.Build) void {
 
     b.installDirectory(
         .{
-            .source_dir = b.path("assets"),
+            .source_dir = b.path("data"),
             .install_dir = .{
-                .custom = "assets",
+                .custom = "data",
             },
             .install_subdir = "",
         },
     );
+
+    // b.installDirectory(
+    //     .{
+    //         .source_dir = b.path("assets"),
+    //         .install_dir = .{
+    //             .custom = "assets",
+    //         },
+    //         .install_subdir = "",
+    //     },
+    // );
+
+    // b.installDirectory(
+    //     .{
+    //         .source_dir = b.path("config"),
+    //         .install_dir = .{
+    //             .custom = "config",
+    //         },
+    //         .install_subdir = "",
+    //     },
+    // );
+
+    // b.installDirectory(
+    //     .{
+    //         .source_dir = b.path("mods"),
+    //         .install_dir = .{
+    //             .custom = "mods",
+    //         },
+    //         .install_subdir = "",
+    //     },
+    // );
 
     b.installArtifact(exe);
 

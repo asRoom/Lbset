@@ -1,5 +1,5 @@
 # Lbset
-A simple cards game engine written in SDL3 & OpenGL with Lua.
+A simple game framework written in SDL3 & OpenGL with Lua.
 ## Install
 To build this repository, you need `zig 0.14.1` or later. You can get it from here [⚡Zig](https://ziglang.org/).
 

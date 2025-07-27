@@ -6,11 +6,11 @@
     .minimum_zig_version = "0.14.0",
 
     .dependencies = .{
-        // .zimgui = .{
-        //     .path = "third_party/zimgui",
-        // },
         .zsdl3 = .{
             .path = "third_party/zsdl3",
+        },
+        .zsdl3_ttf = .{
+            .path = "third_party/zsdl3-ttf",
         },
         .clay = .{
             .path = "third_party/clay",

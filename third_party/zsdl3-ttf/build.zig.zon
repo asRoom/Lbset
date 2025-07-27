@@ -1,0 +1,19 @@
+.{
+    .name = .zsdl3_ttf,
+    .version = "0.0.0",
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{
+        .zsdl3 = .{
+            .path = "../zsdl3",
+        },
+        .zfreetype = .{
+            .path = "third_party/zfreetype",
+        },
+    },
+    .fingerprint = 0x680109f030a40563,
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
