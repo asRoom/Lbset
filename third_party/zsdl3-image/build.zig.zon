@@ -1,0 +1,17 @@
+.{
+    .name = .zsdl3_image,
+
+    .version = "0.0.0",
+
+    .fingerprint = 0x8bf316f3f321016e,
+
+    .minimum_zig_version = "0.14.1",
+
+    .dependencies = .{},
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

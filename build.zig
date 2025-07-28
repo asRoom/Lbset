@@ -1,5 +1,4 @@
 const std = @import("std");
-
 const csource: []const []const u8 = @import("csource.zon");
 
 pub fn build(b: *std.Build) void {
@@ -7,7 +6,6 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const exe_mod = b.createModule(.{
-        // .root_source_file = b.path("src/main.zig"),
         .root_source_file = null,
         .target = target,
         .optimize = optimize,
@@ -21,6 +19,9 @@ pub fn build(b: *std.Build) void {
     exe_mod.addIncludePath(b.path("third_party/lua/src"));
     exe_mod.addIncludePath(b.path("third_party/physfs/src"));
     exe_mod.addIncludePath(b.path("third_party/clay"));
+    exe_mod.addIncludePath(b.path("third_part/zsdl3/include"));
+    exe_mod.addIncludePath(b.path("third_part/zsdl3-image/include"));
+    exe_mod.addIncludePath(b.path("third_part/zsdl3-ttf/include"));
 
     exe_mod.addCSourceFiles(.{
         .files = csource,
@@ -93,6 +94,12 @@ pub fn build(b: *std.Build) void {
     });
     exe.root_module.addImport("zsdl3_ttf", zsdl3_ttf.module("zsdl3_ttf"));
 
+    const zsdl3_image = b.dependency("zsdl3_image", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe.root_module.addImport("zsdl3_image", zsdl3_image.module("zsdl3_image"));
+
     const zsdl3 = b.dependency("zsdl3", .{
         .target = target,
         .optimize = optimize,
@@ -107,16 +114,7 @@ pub fn build(b: *std.Build) void {
 
     exe.linkLibrary(zsdl3.artifact("SDL3"));
 
-    // exe.linkSystemLibrary("SDL3");
-    // exe.linkSystemLibrary("SDL3_ttf");
-    // exe.linkSystemLibrary("freetype");
-    // exe.linkSystemLibrary("harfbuzz");
-    // exe.linkSystemLibrary("cairo");
-    // exe.linkSystemLibrary("libpng");
-    // exe.linkSystemLibrary("zlib");
-
     exe.linkLibC();
-    // exe.linkLibCpp();
 
     switch (target.result.os.tag) {
         .windows => {
@@ -164,46 +162,6 @@ pub fn build(b: *std.Build) void {
     //     },
     // }
 
-    b.installDirectory(
-        .{
-            .source_dir = b.path("data"),
-            .install_dir = .{
-                .custom = "data",
-            },
-            .install_subdir = "",
-        },
-    );
-
-    // b.installDirectory(
-    //     .{
-    //         .source_dir = b.path("assets"),
-    //         .install_dir = .{
-    //             .custom = "assets",
-    //         },
-    //         .install_subdir = "",
-    //     },
-    // );
-
-    // b.installDirectory(
-    //     .{
-    //         .source_dir = b.path("config"),
-    //         .install_dir = .{
-    //             .custom = "config",
-    //         },
-    //         .install_subdir = "",
-    //     },
-    // );
-
-    // b.installDirectory(
-    //     .{
-    //         .source_dir = b.path("mods"),
-    //         .install_dir = .{
-    //             .custom = "mods",
-    //         },
-    //         .install_subdir = "",
-    //     },
-    // );
-
     b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
@@ -215,13 +173,4 @@ pub fn build(b: *std.Build) void {
 
     const run_step = b.step("run", "Run the app");
     run_step.dependOn(&run_cmd.step);
-
-    const exe_unit_tests = b.addTest(.{
-        .root_module = exe_mod,
-    });
-
-    const run_exe_unit_tests = b.addRunArtifact(exe_unit_tests);
-
-    const test_step = b.step("test", "Run unit tests");
-    test_step.dependOn(&run_exe_unit_tests.step);
 }

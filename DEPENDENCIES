@@ -1,0 +1,11 @@
+SDL3 - https://github.com/castholm/SDL/tree/v0.2.4+3.2.16
+SDL3-ttf - https://github.com/libsdl-org/SDL_ttf/tree/2dae431451f1d1ad70c2006443c0892b75ece6d6
+SDL3-image - https://github.com/libsdl-org/SDL_image/tree/ff4e426dc09e2394c66cf4af358bbb1f3baf3c45
+c-algorithms - https://github.com/fragglet/c-algorithms/tree/59094fe37aca66257cac3283b873e39b700740f3
+cJSON - https://github.com/DaveGamble/cJSON/tree/8f2beb57ddad1f94bed899790b00f46df893ccac
+clay - https://github.com/nicbarker/clay/tree/v0.14
+flecs - https://github.com/zig-gamedev/zflecs/tree/5310f5f64bf1a65f2b19d46542ba2b41a8854fe4
+logc - https://github.com/rxi/log.c/tree/f9ea34994bd58ed342d2245cd4110bb5c6790153
+lua - https://www.lua.org/ftp/lua-5.4.8.tar.gz
+physfs - https://github.com/icculus/physfs/tree/adfdec6af14e4d12551446e7ad060415ca563950
+tiny-bignum-c - https://github.com/kokke/tiny-bignum-c/tree/2ffac69817adbe08930befd9375d31658a8311a4

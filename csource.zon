@@ -1,4 +1,4 @@
 .{
-    "main.c",
-    "assets/load.c",
+    // Add you c source code file name here.
+    // "src/main.c" for example.
 }

@@ -12,6 +12,9 @@
         .zsdl3_ttf = .{
             .path = "third_party/zsdl3-ttf",
         },
+        .zsdl3_image = .{
+            .path = "third_party/zsdl3-image",
+        },
         .clay = .{
             .path = "third_party/clay",
         },
