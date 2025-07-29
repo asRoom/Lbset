@@ -14,6 +14,8 @@ pub fn build(b: *std.Build) void {
     );
 
     mod.addIncludePath(b.path("../zsdl3/include"));
+    mod.addIncludePath(b.path("../zsdl3-image/include"));
+    mod.addIncludePath(b.path("../zsdl3-ttf/include"));
 
     mod.addCSourceFiles(.{
         .files = &.{

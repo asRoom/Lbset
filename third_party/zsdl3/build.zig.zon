@@ -15,7 +15,7 @@
         .sdl_linux_deps = .{
             // .url = "git+https://github.com/castholm/SDL_linux_deps.git#085212f286621835f2638cb0cfff078fe515341a",
             // .hash = "sdl_linux_deps-0.0.0-Vy5_h4AlfwBtG7MIPe7ZNUANhmYLek_SA140uYk9SrED",
-            .path = "third_party/sdl_linux_deps",
+            .path = "../SDL_linux_deps",
             .lazy = true,
         },
     },

@@ -18,7 +18,7 @@ pub fn build(b: *std.Build) void {
     });
 
     zsdl3_ttf.addIncludePath(b.path("../zsdl3/include"));
-    zsdl3_ttf.addIncludePath(b.path("third_party/zfreetype/include"));
+    zsdl3_ttf.addIncludePath(b.path("../zfreetype/include"));
     zsdl3_ttf.addIncludePath(b.path("include"));
 
     zsdl3_ttf.addImport("zfreetype", freetype.module("zfreetype"));

@@ -7,7 +7,7 @@
             .path = "../zsdl3",
         },
         .zfreetype = .{
-            .path = "third_party/zfreetype",
+            .path = "../zfreetype",
         },
     },
     .fingerprint = 0x680109f030a40563,
